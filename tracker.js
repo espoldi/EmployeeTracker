@@ -28,14 +28,26 @@ function start() {
     .then(function(answer) {
         switch(answer.action) {
             case "Add New Data":
-
+                addData();
+                break;
             case "View Current Data":
-
+                viewData();
+                break;
             case "Update Data":
-
+                updateData();
+                break;
             case "Exit Program":
                 console.log("Have a good day!");
                 connection.end();
         }
     })
 };
+
+// Function for adding departments, roles, and employees
+function addData() {};
+
+// Function for viewing current data
+function viewData() {};
+
+// Function for updating departments, roles, managers, and employees
+function updateData() {};
