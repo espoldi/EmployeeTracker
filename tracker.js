@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "root",
     database: "employee_trackerDB"
 });
 
@@ -19,5 +19,23 @@ connection.connect(function(err) {
 
 // Starting function
 function start() {
+    inquirer.prompt({
+        name: "action",
+        type: "list",
+        message: "What would you like to do?",
+        choices: ["Add New Data", "View Current Data", "Update Data", "Exit Program"]
+    })
+    .then(function(answer) {
+        switch(answer.action) {
+            case "Add New Data":
 
+            case "View Current Data":
+
+            case "Update Data":
+
+            case "Exit Program":
+                console.log("Have a good day!");
+                connection.end();
+        }
+    })
 };
