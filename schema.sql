@@ -16,4 +16,11 @@ CREATE TABLE roles (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE employees ();
+CREATE TABLE employees (
+    id INT NOT NULL,
+    first_name VARCHAR(30) NULL,
+    last_name VARCHAR(30) NULL,
+    role_id INT NOT NULL,
+    manager_id INT NULL,
+    PRIMARY KEY (id)
+);
