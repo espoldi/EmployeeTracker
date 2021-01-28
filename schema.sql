@@ -11,20 +11,16 @@ CREATE TABLE departments (
 CREATE TABLE roles (
     id INT NOT NULL,
     title VARCHAR(30) NOT NULL,
-    salary DECIMAL(10,4) NULL,
-    department_id INT NOT NULL,
+    salary DECIMAL(10,2) NULL,
+    department_id INT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE employees (
     id INT NOT NULL,
-    first_name VARCHAR(30) NULL,
-    last_name VARCHAR(30) NULL,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
     role_id INT NOT NULL,
     manager_id INT NULL,
     PRIMARY KEY (id)
 );
-
-SELECT * FROM departments;
-SELECT * FROM roles;
-SELECT * FROM employees;
