@@ -8,6 +8,12 @@ CREATE TABLE departments (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE roles ();
+CREATE TABLE roles (
+    id INT NOT NULL,
+    title VARCHAR(30) NULL,
+    salary DECIMAL(10,4) NULL,
+    department_id INT NOT NULL,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE employees ();
