@@ -1,6 +1,7 @@
 // Dependencies
 var mysql = require("mysql");
 var inquirer = require("inquirer");
+const cTable = require("console.table");
 
 // Create connection
 var connection = mysql.createConnection({
@@ -55,7 +56,25 @@ function addData() {
     .then(function(answer) {
         switch(answer.add) {
             case "Department":
-
+                inquirer.prompt({
+                    name: "name",
+                    type: "input",
+                    message: "What is the name of the department?"
+                })
+                .then(function(answer) {
+                    connection.query(
+                        "INSERT INTO departments SET ?",
+                        {
+                            name: answer.name
+                        },
+                        function(err) {
+                            if (err) throw (err);
+                            console.log("Department successfully added!");
+                            start();
+                        }
+                    )
+                })
+                
             case "Role":
 
             case "Employee":
