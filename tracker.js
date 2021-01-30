@@ -29,13 +29,10 @@ function start() {
         switch(answer.action) {
             case "Add New Data":
                 addData();
-                break;
             case "View Current Data":
                 viewData();
-                break;
             case "Update Data":
                 updateData();
-                break;
             case "Exit Program":
                 console.log("Have a good day!");
                 connection.end();
@@ -71,13 +68,13 @@ function viewData() {};
 // Function for updating departments, roles, managers, and employees
 function updateData() {
     inquirer.prompt({
-        name: "add",
+        name: "update",
         type: "list",
         message: "What would you like to update?",
         choices: ["Department", "Role", "Employee", "Manager", "Back"]
     })
     .then(function(answer) {
-        switch(answer.add) {
+        switch(answer.update) {
             case "Department":
 
             case "Role":
@@ -85,7 +82,7 @@ function updateData() {
             case "Employee":
 
             case "Manager":
-                
+
             case "Back":
                 start();
         }
