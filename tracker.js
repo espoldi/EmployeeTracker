@@ -44,7 +44,26 @@ function start() {
 };
 
 // Function for adding departments, roles, and employees
-function addData() {};
+function addData() {
+    inquirer.prompt({
+        name: "add",
+        type: "list",
+        message: "What would you like to add?",
+        choices: ["Department", "Role", "Employee", "Back"]
+    })
+    .then(function(answer) {
+        switch(answer.add) {
+            case "Department":
+
+            case "Role":
+
+            case "Employee":
+
+            case "Back":
+                start();
+        }
+    })
+};
 
 // Function for viewing current data
 function viewData() {};
