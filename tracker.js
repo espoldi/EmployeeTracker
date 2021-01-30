@@ -108,6 +108,42 @@ function addData() {
                         })
 
                 case "Employee":
+                    inquirer.prompt([{
+                        name: "first_name",
+                        type: "input",
+                        message: "What is the first name of the employee?"
+                    },
+                    {
+                        name: "last_name",
+                        type: "input",
+                        message: "What is the last name of the employee?"
+                    },
+                    {
+                        name: "roleId",
+                        type: "input",
+                        message: "What is the role id for the employee?"
+                    },
+                    {
+                        name: "managerId",
+                        type: "input",
+                        message: "What is the manager id for the employee?"
+                    }])
+                        .then(function (answer) {
+                            connection.query(
+                                "INSERT INTO departments SET ?",
+                                {
+                                    First: answer.first_name,
+                                    Last: answer.last_name,
+                                    roleID: answer.roleId,
+                                    managerID: answer.managerId
+                                },
+                                function (err) {
+                                    if (err) throw (err);
+                                    console.log("Employee successfully added!");
+                                    start();
+                                }
+                            )
+                        })
 
                 case "Back":
                     start();
