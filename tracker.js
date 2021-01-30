@@ -14,6 +14,7 @@ var connection = mysql.createConnection({
 // Connect to server and database
 connection.connect(function(err) {
     if (err) throw (err);
+    console.log("connected");
     start();
 });
 
@@ -29,10 +30,13 @@ function start() {
         switch(answer.action) {
             case "Add New Data":
                 addData();
+                break;
             case "View Current Data":
                 viewData();
+                break;
             case "Update Data":
                 updateData();
+                break;
             case "Exit Program":
                 console.log("Have a good day!");
                 connection.end();
