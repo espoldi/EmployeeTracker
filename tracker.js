@@ -69,4 +69,25 @@ function addData() {
 function viewData() {};
 
 // Function for updating departments, roles, managers, and employees
-function updateData() {};
+function updateData() {
+    inquirer.prompt({
+        name: "add",
+        type: "list",
+        message: "What would you like to update?",
+        choices: ["Department", "Role", "Employee", "Manager", "Back"]
+    })
+    .then(function(answer) {
+        switch(answer.add) {
+            case "Department":
+
+            case "Role":
+
+            case "Employee":
+
+            case "Manager":
+                
+            case "Back":
+                start();
+        }
+    })
+};
