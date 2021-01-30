@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 });
 
 // Connect to server and database
-connection.connect(function(err) {
+connection.connect(function (err) {
     if (err) throw (err);
     console.log("connected");
     start();
@@ -27,22 +27,22 @@ function start() {
         message: "What would you like to do?",
         choices: ["Add New Data", "View Current Data", "Update Data", "Exit Program"]
     })
-    .then(function(answer) {
-        switch(answer.action) {
-            case "Add New Data":
-                addData();
-                break;
-            case "View Current Data":
-                viewData();
-                break;
-            case "Update Data":
-                updateData();
-                break;
-            case "Exit Program":
-                console.log("Have a good day!");
-                connection.end();
-        }
-    })
+        .then(function (answer) {
+            switch (answer.action) {
+                case "Add New Data":
+                    addData();
+                    break;
+                case "View Current Data":
+                    viewData();
+                    break;
+                case "Update Data":
+                    updateData();
+                    break;
+                case "Exit Program":
+                    console.log("Have a good day!");
+                    connection.end();
+            }
+        })
 };
 
 // Function for adding departments, roles, and employees
@@ -53,40 +53,40 @@ function addData() {
         message: "What would you like to add?",
         choices: ["Department", "Role", "Employee", "Back"]
     })
-    .then(function(answer) {
-        switch(answer.add) {
-            case "Department":
-                inquirer.prompt({
-                    name: "name",
-                    type: "input",
-                    message: "What is the name of the department?"
-                })
-                .then(function(answer) {
-                    connection.query(
-                        "INSERT INTO departments SET ?",
-                        {
-                            name: answer.name
-                        },
-                        function(err) {
-                            if (err) throw (err);
-                            console.log("Department successfully added!");
-                            start();
-                        }
-                    )
-                })
-                
-            case "Role":
+        .then(function (answer) {
+            switch (answer.add) {
+                case "Department":
+                    inquirer.prompt({
+                        name: "name",
+                        type: "input",
+                        message: "What is the name of the department?"
+                    })
+                        .then(function (answer) {
+                            connection.query(
+                                "INSERT INTO departments SET ?",
+                                {
+                                    name: answer.name
+                                },
+                                function (err) {
+                                    if (err) throw (err);
+                                    console.log("Department successfully added!");
+                                    start();
+                                }
+                            )
+                        })
 
-            case "Employee":
+                case "Role":
 
-            case "Back":
-                start();
-        }
-    })
+                case "Employee":
+
+                case "Back":
+                    start();
+            }
+        })
 };
 
 // Function for viewing current data
-function viewData() {};
+function viewData() { };
 
 // Function for updating departments, roles, managers, and employees
 function updateData() {
@@ -96,18 +96,18 @@ function updateData() {
         message: "What would you like to update?",
         choices: ["Department", "Role", "Employee", "Manager", "Back"]
     })
-    .then(function(answer) {
-        switch(answer.update) {
-            case "Department":
+        .then(function (answer) {
+            switch (answer.update) {
+                case "Department":
 
-            case "Role":
+                case "Role":
 
-            case "Employee":
+                case "Employee":
 
-            case "Manager":
+                case "Manager":
 
-            case "Back":
-                start();
-        }
-    })
+                case "Back":
+                    start();
+            }
+        })
 };
