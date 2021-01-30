@@ -130,7 +130,7 @@ function addData() {
                     }])
                         .then(function (answer) {
                             connection.query(
-                                "INSERT INTO departments SET ?",
+                                "INSERT INTO employees SET ?",
                                 {
                                     First: answer.first_name,
                                     Last: answer.last_name,
