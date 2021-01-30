@@ -76,6 +76,36 @@ function addData() {
                         })
 
                 case "Role":
+                    inquirer.prompt([{
+                        name: "title",
+                        type: "input",
+                        message: "What is the title of the role?"
+                    },
+                    {
+                        name: "salary",
+                        type: "input",
+                        message: "What is the salary for the role?"
+                    },
+                    {
+                        name: "deptId",
+                        type: "input",
+                        message: "What is the department id for the role?"
+                    }])
+                        .then(function (answer) {
+                            connection.query(
+                                "INSERT INTO roles SET ?",
+                                {
+                                    title: answer.title,
+                                    salary: answer.salary,
+                                    departmentID: answer.deptId
+                                },
+                                function (err) {
+                                    if (err) throw (err);
+                                    console.log("Role successfully added!");
+                                    start();
+                                }
+                            )
+                        })
 
                 case "Employee":
 
