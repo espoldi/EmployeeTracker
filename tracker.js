@@ -152,7 +152,50 @@ function addData() {
 };
 
 // Function for viewing current data
-function viewData() { };
+function viewData() {
+    inquirer.prompt([{
+        name: "view",
+        type: "list",
+        message: "What data would you like to view?",
+        choices: ["Departments", "Roles", "Employees", "Back"]
+    }])
+        .then(function (answer) {
+            switch (answer.view) {
+                case "Departments":
+                    connection.query(
+                        "SELECT * FROM departments",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                        })
+                    start();
+                    break;
+
+                case "Roles":
+                    connection.query(
+                        "SELECT * FROM roles",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                        })
+                    start();
+                    break;
+
+                case "Employees":
+                    connection.query(
+                        "SELECT * FROM employees",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                        })
+                    start();
+                    break;
+
+                case "Back":
+                    start();
+            }
+        })
+};
 
 // Function for updating departments, roles, managers, and employees
 function updateData() {
