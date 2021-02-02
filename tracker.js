@@ -170,6 +170,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
+                            console.log("Press enter to continue.");
                         })
                     start();
                     break;
@@ -180,6 +181,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
+                            console.log("Press enter to continue.");
                         })
                     start();
                     break;
@@ -190,6 +192,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
+                            console.log("Press enter to continue.");
                         })
                     start();
                     break;
