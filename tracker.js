@@ -74,7 +74,7 @@ function addData() {
                                 }
                             )
                         })
-                        break;
+                    break;
 
                 case "Role":
                     inquirer.prompt([{
@@ -107,7 +107,7 @@ function addData() {
                                 }
                             )
                         })
-                        break;
+                    break;
 
                 case "Employee":
                     inquirer.prompt([{
@@ -146,7 +146,7 @@ function addData() {
                                 }
                             )
                         })
-                        break;
+                    break;
 
                 case "Back":
                     start();
@@ -214,6 +214,36 @@ function updateData() {
         .then(function (answer) {
             switch (answer.update) {
                 case "Department":
+                    connection.query(
+                        "SELECT * FROM departments",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "changeDept",
+                                type: "input",
+                                message: "What is the id of the department you would like to change?"
+                            })
+                                .then(function (answer) {
+                                    inquirer.prompt({
+                                        name: "newName",
+                                        type: "input",
+                                        message: "What would you like to rename this department?"
+                                    })
+                                        .then(function (response) {
+                                            connection.query(
+                                                "UPDATE departments SET ? WHERE ?",
+                                                [{ name: response.newName },
+                                                { id: answer.changeDept }],
+                                                function (err) {
+                                                    if (err) throw (err);
+                                                    start();
+                                                }
+                                            )
+                                        })
+                                })
+                        })
+                    break;
 
                 case "Role":
 
