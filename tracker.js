@@ -59,13 +59,13 @@ function addData() {
                     inquirer.prompt({
                         name: "name",
                         type: "input",
-                        message: "What is the name of the department?"
+                        message: "What is the name of the department?",
                     })
-                        .then(function (answer) {
+                        .then(function (response) {
                             connection.query(
                                 "INSERT INTO departments SET ?",
                                 {
-                                    name: answer.name
+                                    name: response.name
                                 },
                                 function (err) {
                                     if (err) throw (err);
@@ -74,6 +74,7 @@ function addData() {
                                 }
                             )
                         })
+                        break;
 
                 case "Role":
                     inquirer.prompt([{
@@ -106,6 +107,7 @@ function addData() {
                                 }
                             )
                         })
+                        break;
 
                 case "Employee":
                     inquirer.prompt([{
@@ -144,6 +146,7 @@ function addData() {
                                 }
                             )
                         })
+                        break;
 
                 case "Back":
                     start();
