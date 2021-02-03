@@ -465,7 +465,7 @@ function deleteData() {
                                         },
                                         function (err) {
                                             if (err) throw (err);
-                                            console.log("Department successfully deleted!");
+                                            console.log("Role successfully deleted!");
                                             deleteData();
                                         }
                                     )
@@ -491,7 +491,7 @@ function deleteData() {
                                         },
                                         function (err) {
                                             if (err) throw (err);
-                                            console.log("Department successfully deleted!");
+                                            console.log("Employee successfully deleted!");
                                             deleteData();
                                         }
                                     )
