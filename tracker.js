@@ -316,48 +316,45 @@ function updateData() {
                                         choices: ["Name", "Role", "Department", "Manager", "Back"]
                                     })
                                         .then(function (response) {
-                                            switch(response.edit) {
+                                            switch (response.edit) {
                                                 case "Name":
                                                     inquirer.prompt([
-                                                    {
-                                                        name: "first",
-                                                        type: "input",
-                                                        message: "What is the first name of the employee?"
-                                                    },
-                                                    {
-                                                        name: "last",
-                                                        type: "input",
-                                                        message: "What is the last name of the employee?"
-                                                    }])
-                                                    .then(function(ans) {
-                                                        connection.query(
-                                                            "UPDATE employees SET ? WHERE ?",
-                                                            [{
-                                                                first_name: ans.first,
-                                                                last_name: ans.last
-                                                            },
-                                                            { id: answer.changeEmployee }],
-                                                            function (err) {
-                                                                if (err) throw (err);
-                                                                updateData();
-                                                            }
-                                                        )
-                                                    })
-                                                    break;
-
-                                                case "Role":
-                                                    inquirer.prompt({
-                                                            name: "role",
+                                                        {
+                                                            name: "first",
                                                             type: "input",
                                                             message: "What is the first name of the employee?"
-                                                        })
-                                                        .then(function(ans) {
+                                                        },
+                                                        {
+                                                            name: "last",
+                                                            type: "input",
+                                                            message: "What is the last name of the employee?"
+                                                        }])
+                                                        .then(function (ans) {
                                                             connection.query(
                                                                 "UPDATE employees SET ? WHERE ?",
                                                                 [{
                                                                     first_name: ans.first,
                                                                     last_name: ans.last
                                                                 },
+                                                                { id: answer.changeEmployee }],
+                                                                function (err) {
+                                                                    if (err) throw (err);
+                                                                    updateData();
+                                                                }
+                                                            )
+                                                        })
+                                                    break;
+
+                                                case "Role":
+                                                    inquirer.prompt({
+                                                        name: "role",
+                                                        type: "input",
+                                                        message: "What is the new role id of the employee?"
+                                                    })
+                                                        .then(function (ans) {
+                                                            connection.query(
+                                                                "UPDATE employees SET ? WHERE ?",
+                                                                [{ role_id: ans.role },
                                                                 { id: answer.changeEmployee }],
                                                                 function (err) {
                                                                     if (err) throw (err);
