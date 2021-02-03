@@ -298,6 +298,70 @@ function updateData() {
                     break;
 
                 case "Employee":
+                    connection.query(
+                        "SELECT * FROM employees",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "changeEmployee",
+                                type: "input",
+                                message: "What is the id of the employee you would like to change?"
+                            })
+                                .then(function (answer) {
+                                    inquirer.prompt({
+                                        name: "edit",
+                                        type: "list",
+                                        message: "What would you like to edit for this employee?",
+                                        choices: ["Name", "Role", "Department", "Manager", "Back"]
+                                    })
+                                        .then(function (response) {
+                                            switch(response.edit) {
+                                                case "Name":
+                                                    inquirer.prompt(
+                                                    {
+                                                        name: "first",
+                                                        type: "input",
+                                                        message: "What is the first name of the employee?"
+                                                    },
+                                                    {
+                                                        name: "last",
+                                                        type: "input",
+                                                        message: "What is the last name of the employee?"
+                                                    })
+                                                    .then(function(ans) {
+                                                        connection.query(
+                                                            "UPDATE employees SET ? WHERE ?",
+                                                            [{
+                                                                first_name: ans.first,
+                                                                last_name: ans.last
+                                                            },
+                                                            { id: answer.changeEmployee }],
+                                                            function (err) {
+                                                                if (err) throw (err);
+                                                                updateData();
+                                                            }
+                                                        )
+                                                    })
+                                                    break;
+
+                                                case "Role":
+                                                    break;
+
+                                                case "Department":
+                                                    break;
+
+                                                case "Manager":
+                                                    break;
+
+                                                case "Back":
+                                                    start();
+                                                    break;
+                                            }
+                                        })
+                                })
+                        })
+                    break;
 
                 case "Back":
                     start();
