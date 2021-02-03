@@ -70,7 +70,7 @@ function addData() {
                                 function (err) {
                                     if (err) throw (err);
                                     console.log("Department successfully added!");
-                                    start();
+                                    addData();
                                 }
                             )
                         })
@@ -103,7 +103,7 @@ function addData() {
                                 function (err) {
                                     if (err) throw (err);
                                     console.log("Role successfully added!");
-                                    start();
+                                    addData();
                                 }
                             )
                         })
@@ -148,7 +148,7 @@ function addData() {
                                 function (err) {
                                     if (err) throw (err);
                                     console.log("Employee successfully added!");
-                                    start();
+                                    addData();
                                 }
                             )
                         })
@@ -178,7 +178,7 @@ function viewData() {
                             console.table(result);
                             console.log("Press enter to continue.");
                         })
-                    start();
+                    viewData();
                     break;
 
                 case "Roles":
@@ -189,7 +189,7 @@ function viewData() {
                             console.table(result);
                             console.log("Press enter to continue.");
                         })
-                    start();
+                    viewData();
                     break;
 
                 case "Employees":
@@ -200,7 +200,7 @@ function viewData() {
                             console.table(result);
                             console.log("Press enter to continue.");
                         })
-                    start();
+                    viewData();
                     break;
 
                 case "Back":
@@ -243,7 +243,7 @@ function updateData() {
                                                 { id: answer.changeDept }],
                                                 function (err) {
                                                     if (err) throw (err);
-                                                    start();
+                                                    updateData();
                                                 }
                                             )
                                         })
@@ -289,7 +289,7 @@ function updateData() {
                                                 { id: answer.changeRole }],
                                                 function (err) {
                                                     if (err) throw (err);
-                                                    start();
+                                                    updateData();
                                                 }
                                             )
                                         })
