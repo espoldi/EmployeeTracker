@@ -318,7 +318,7 @@ function updateData() {
                                         .then(function (response) {
                                             switch(response.edit) {
                                                 case "Name":
-                                                    inquirer.prompt(
+                                                    inquirer.prompt([
                                                     {
                                                         name: "first",
                                                         type: "input",
@@ -328,7 +328,7 @@ function updateData() {
                                                         name: "last",
                                                         type: "input",
                                                         message: "What is the last name of the employee?"
-                                                    })
+                                                    }])
                                                     .then(function(ans) {
                                                         connection.query(
                                                             "UPDATE employees SET ? WHERE ?",
@@ -346,6 +346,25 @@ function updateData() {
                                                     break;
 
                                                 case "Role":
+                                                    inquirer.prompt({
+                                                            name: "role",
+                                                            type: "input",
+                                                            message: "What is the first name of the employee?"
+                                                        })
+                                                        .then(function(ans) {
+                                                            connection.query(
+                                                                "UPDATE employees SET ? WHERE ?",
+                                                                [{
+                                                                    first_name: ans.first,
+                                                                    last_name: ans.last
+                                                                },
+                                                                { id: answer.changeEmployee }],
+                                                                function (err) {
+                                                                    if (err) throw (err);
+                                                                    updateData();
+                                                                }
+                                                            )
+                                                        })
                                                     break;
 
                                                 case "Department":
