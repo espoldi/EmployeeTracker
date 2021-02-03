@@ -126,11 +126,6 @@ function addData() {
                         message: "What is the role id for the employee?"
                     },
                     {
-                        name: "deptId",
-                        type: "input",
-                        message: "What is the department id for the employee?"
-                    },
-                    {
                         name: "managerId",
                         type: "input",
                         message: "What is the manager id for the employee?"
@@ -142,7 +137,6 @@ function addData() {
                                     first_name: answer.first_name,
                                     last_name: answer.last_name,
                                     role_id: answer.roleId,
-                                    department_id: answer.deptId,
                                     manager_id: answer.managerId
                                 },
                                 function (err) {
