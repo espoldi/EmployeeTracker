@@ -34,7 +34,7 @@ Make sure that your command prompt is in the correct folder and type in the foll
 
 [Github Repository](https://github.com/espoldi/EmployeeTracker)
 
-[Video Walkthrough]()
+[Video Walkthrough](https://drive.google.com/file/d/1SDw8YymyRIts9p5YbgG9b1XCTG21VFo2/view?usp=sharing)
 
 ## License
 
