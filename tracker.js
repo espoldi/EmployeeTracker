@@ -194,7 +194,7 @@ function viewData() {
 
                 case "Employees":
                     connection.query(
-                        "SELECT * FROM employees",
+                        "SELECT * FROM employees, ORDER BY manager_id",
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
@@ -215,7 +215,7 @@ function updateData() {
         name: "update",
         type: "list",
         message: "What would you like to update?",
-        choices: ["Department", "Role", "Employee", "Manager", "Back"]
+        choices: ["Department", "Role", "Employee", "Back"]
     })
         .then(function (answer) {
             switch (answer.update) {
@@ -298,8 +298,6 @@ function updateData() {
                     break;
 
                 case "Employee":
-
-                case "Manager":
 
                 case "Back":
                     start();
