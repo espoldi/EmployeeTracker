@@ -365,6 +365,22 @@ function updateData() {
                                                     break;
 
                                                 case "Department":
+                                                    inquirer.prompt({
+                                                        name: "department",
+                                                        type: "input",
+                                                        message: "What is the new department id of the employee?"
+                                                    })
+                                                        .then(function (ans) {
+                                                            connection.query(
+                                                                "UPDATE employees SET ? WHERE ?",
+                                                                [{ department_id: ans.department },
+                                                                { id: answer.changeEmployee }],
+                                                                function (err) {
+                                                                    if (err) throw (err);
+                                                                    updateData();
+                                                                }
+                                                            )
+                                                        })
                                                     break;
 
                                                 case "Manager":
