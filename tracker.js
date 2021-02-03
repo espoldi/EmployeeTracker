@@ -276,7 +276,7 @@ function updateData() {
                                             connection.query(
                                                 "UPDATE roles SET ? WHERE ?",
                                                 [{
-                                                    name: response.newTitle,
+                                                    title: response.newTitle,
                                                     salary: response.newSalary,
                                                     department_id: response.newDeptID
                                                 },
@@ -307,7 +307,7 @@ function updateData() {
                                         name: "edit",
                                         type: "list",
                                         message: "What would you like to edit for this employee?",
-                                        choices: ["Name", "Role", "Department", "Manager", "Back"]
+                                        choices: ["Name", "Role", "Manager", "Back"]
                                     })
                                         .then(function (response) {
                                             switch (response.edit) {
@@ -349,25 +349,6 @@ function updateData() {
                                                             connection.query(
                                                                 "UPDATE employees SET ? WHERE ?",
                                                                 [{ role_id: ans.role },
-                                                                { id: answer.changeEmployee }],
-                                                                function (err) {
-                                                                    if (err) throw (err);
-                                                                    updateData();
-                                                                }
-                                                            )
-                                                        })
-                                                    break;
-
-                                                case "Department":
-                                                    inquirer.prompt({
-                                                        name: "department",
-                                                        type: "input",
-                                                        message: "What is the new department id of the employee?"
-                                                    })
-                                                        .then(function (ans) {
-                                                            connection.query(
-                                                                "UPDATE employees SET ? WHERE ?",
-                                                                [{ department_id: ans.department },
                                                                 { id: answer.changeEmployee }],
                                                                 function (err) {
                                                                     if (err) throw (err);
