@@ -384,6 +384,22 @@ function updateData() {
                                                     break;
 
                                                 case "Manager":
+                                                    inquirer.prompt({
+                                                        name: "manager",
+                                                        type: "input",
+                                                        message: "What is the new manager id of the employee?"
+                                                    })
+                                                        .then(function (ans) {
+                                                            connection.query(
+                                                                "UPDATE employees SET ? WHERE ?",
+                                                                [{ manager_id: ans.manager },
+                                                                { id: answer.changeEmployee }],
+                                                                function (err) {
+                                                                    if (err) throw (err);
+                                                                    updateData();
+                                                                }
+                                                            )
+                                                        })
                                                     break;
 
                                                 case "Back":
