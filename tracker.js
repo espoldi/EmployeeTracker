@@ -98,7 +98,7 @@ function addData() {
                                 {
                                     title: answer.title,
                                     salary: answer.salary,
-                                    departmentID: answer.deptId
+                                    department_id: answer.deptId
                                 },
                                 function (err) {
                                     if (err) throw (err);
@@ -126,6 +126,11 @@ function addData() {
                         message: "What is the role id for the employee?"
                     },
                     {
+                        name: "deptId",
+                        type: "input",
+                        message: "What is the department id for the employee?"
+                    },
+                    {
                         name: "managerId",
                         type: "input",
                         message: "What is the manager id for the employee?"
@@ -136,8 +141,9 @@ function addData() {
                                 {
                                     First: answer.first_name,
                                     Last: answer.last_name,
-                                    roleID: answer.roleId,
-                                    managerID: answer.managerId
+                                    role_id: answer.roleId,
+                                    department_id: answer.deptId,
+                                    manager_id: answer.managerId
                                 },
                                 function (err) {
                                     if (err) throw (err);
