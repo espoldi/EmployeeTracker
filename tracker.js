@@ -176,7 +176,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press enter to continue.");
+                            console.log("Press up or down to continue.");
                         })
                     viewData();
                     break;
@@ -187,7 +187,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press enter to continue.");
+                            console.log("Press up or down to continue.");
                         })
                     viewData();
                     break;
@@ -198,7 +198,7 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press enter to continue.");
+                            console.log("Press up or down to continue.");
                         })
                     viewData();
                     break;
