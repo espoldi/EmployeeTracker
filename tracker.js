@@ -188,7 +188,7 @@ function viewData() {
 
                 case "Employees":
                     connection.query(
-                        "SELECT * FROM employees, ORDER BY manager_id",
+                        "SELECT * FROM employees ORDER BY manager_id",
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
