@@ -435,7 +435,7 @@ function deleteData() {
                                     connection.query(
                                         "DELETE FROM departments WHERE ?",
                                         {
-                                            id: response.id
+                                            id: response.choice
                                         },
                                         function (err) {
                                             if (err) throw (err);
@@ -447,6 +447,30 @@ function deleteData() {
                         })
                     break;
                 case "Roles":
+                    connection.query(
+                        "SELECT * FROM roles",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "choice",
+                                type: "input",
+                                message: "What is the id of the role you wish to delete?",
+                            })
+                                .then(function (response) {
+                                    connection.query(
+                                        "DELETE FROM roles WHERE ?",
+                                        {
+                                            id: response.choice
+                                        },
+                                        function (err) {
+                                            if (err) throw (err);
+                                            console.log("Department successfully deleted!");
+                                            deleteData();
+                                        }
+                                    )
+                                })
+                        })
                     break;
                 case "Employees":
                     break;
