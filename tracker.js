@@ -246,6 +246,50 @@ function updateData() {
                     break;
 
                 case "Role":
+                    connection.query(
+                        "SELECT * FROM roles",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "changeRole",
+                                type: "input",
+                                message: "What is the id of the role you would like to change?"
+                            })
+                                .then(function (answer) {
+                                    inquirer.prompt([{
+                                        name: "newTitle",
+                                        type: "input",
+                                        message: "What would you like to rename this role's title?"
+                                    },
+                                    {
+                                        name: "newSalary",
+                                        type: "input",
+                                        message: "What would you like to reset this role's salary?"
+                                    },
+                                    {
+                                        name: "newDeptID",
+                                        type: "input",
+                                        message: "What would you like to set this role's department id?"
+                                    }])
+                                        .then(function (response) {
+                                            connection.query(
+                                                "UPDATE roles SET ? WHERE ?",
+                                                [{
+                                                    name: response.newTitle,
+                                                    salary: response.newSalary,
+                                                    department_id: response.newDeptID
+                                                },
+                                                { id: answer.changeRole }],
+                                                function (err) {
+                                                    if (err) throw (err);
+                                                    start();
+                                                }
+                                            )
+                                        })
+                                })
+                        })
+                    break;
 
                 case "Employee":
 
