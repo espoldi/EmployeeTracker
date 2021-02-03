@@ -25,7 +25,7 @@ function start() {
         name: "action",
         type: "list",
         message: "What would you like to do?",
-        choices: ["Add New Data", "View Current Data", "Update Data", "Exit Program"]
+        choices: ["Add New Data", "View Current Data", "Update Data", "Delete Data", "Exit Program"]
     })
         .then(function (answer) {
             switch (answer.action) {
@@ -37,6 +37,9 @@ function start() {
                     break;
                 case "Update Data":
                     updateData();
+                    break;
+                case "Delete Data":
+                    deleteData();
                     break;
                 case "Exit Program":
                     console.log("Have a good day!");
@@ -404,6 +407,52 @@ function updateData() {
 
                 case "Back":
                     start();
+            }
+        })
+};
+
+function deleteData() {
+    inquirer.prompt({
+        name: "delete",
+        type: "list",
+        message: "What would you like to delete?",
+        choices: ["Departments", "Roles", "Employees", "Back"]
+    })
+        .then(function (answer) {
+            switch (answer.delete) {
+                case "Departments":
+                    connection.query(
+                        "SELECT * FROM departments",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "choice",
+                                type: "input",
+                                message: "What is the id of the department you wish to delete?",
+                            })
+                                .then(function (response) {
+                                    connection.query(
+                                        "DELETE FROM departments WHERE ?",
+                                        {
+                                            id: response.id
+                                        },
+                                        function (err) {
+                                            if (err) throw (err);
+                                            console.log("Department successfully deleted!");
+                                            deleteData();
+                                        }
+                                    )
+                                })
+                        })
+                    break;
+                case "Roles":
+                    break;
+                case "Employees":
+                    break;
+                case "Back":
+                    start();
+                    break;
             }
         })
 };
