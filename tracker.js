@@ -170,9 +170,8 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press up or down to continue.");
+                            viewData();
                         })
-                    viewData();
                     break;
 
                 case "Roles":
@@ -181,9 +180,8 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press up or down to continue.");
+                            viewData();
                         })
-                    viewData();
                     break;
 
                 case "Employees":
@@ -192,9 +190,8 @@ function viewData() {
                         function (err, result) {
                             if (err) throw (err);
                             console.table(result);
-                            console.log("Press up or down to continue.");
+                            viewData();
                         })
-                    viewData();
                     break;
 
                 case "Back":
