@@ -139,8 +139,8 @@ function addData() {
                             connection.query(
                                 "INSERT INTO employees SET ?",
                                 {
-                                    First: answer.first_name,
-                                    Last: answer.last_name,
+                                    first_name: answer.first_name,
+                                    last_name: answer.last_name,
                                     role_id: answer.roleId,
                                     department_id: answer.deptId,
                                     manager_id: answer.managerId
