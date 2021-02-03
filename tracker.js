@@ -473,6 +473,30 @@ function deleteData() {
                         })
                     break;
                 case "Employees":
+                    connection.query(
+                        "SELECT * FROM employees",
+                        function (err, result) {
+                            if (err) throw (err);
+                            console.table(result);
+                            inquirer.prompt({
+                                name: "choice",
+                                type: "input",
+                                message: "What is the id of the employee you wish to delete?",
+                            })
+                                .then(function (response) {
+                                    connection.query(
+                                        "DELETE FROM employees WHERE ?",
+                                        {
+                                            id: response.choice
+                                        },
+                                        function (err) {
+                                            if (err) throw (err);
+                                            console.log("Department successfully deleted!");
+                                            deleteData();
+                                        }
+                                    )
+                                })
+                        })
                     break;
                 case "Back":
                     start();
