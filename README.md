@@ -36,6 +36,8 @@ Make sure that your command prompt is in the correct folder and type in the foll
 
 [Video Walkthrough](https://drive.google.com/file/d/1SDw8YymyRIts9p5YbgG9b1XCTG21VFo2/view?usp=sharing)
 
+![Website Screenshot](employeetracker.png)
+
 ## License
 
 This project is protected under MIT License.
